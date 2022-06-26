@@ -673,7 +673,6 @@ main {
   width: 450px;
 
   margin: 0 auto;
-  margin-bottom: 20px;
   padding: 5px 10px;
 
   font-family: "Open Sans", "Arial", sans-serif;
@@ -681,6 +680,11 @@ main {
   color: #000000;
 
   border-radius: 5px;
+}
+
+.text__hashtags__wrapper {
+  display: block;
+  margin-bottom: 20px;
 }
 
 .text__description {
@@ -1402,4 +1406,10 @@ main {
 
 .hidden {
   display: none;
+}
+
+.text__hashtags__error-text {
+  color: #DC143C;
+  margin-top: 8px;
+  text-transform: none;
 }

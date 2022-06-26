@@ -1,4 +1,4 @@
-import { getRandomPositiveInteger } from "./util.js";
+import { getRandomPositiveInteger } from './util.js';
 
 const PHOTOS_COUNT = 26;
 const usersNames = ['Артем', 'Алиса', 'Ярослав', 'Андрей', 'Вадим', 'Ясуо', 'Юля', 'Соня', 'Виталик', 'Мухаммед', 'Ауе басота', 'Ass Destroyer', 'Хулиган228', 'Катя'];
@@ -19,15 +19,15 @@ const photosCommentsText = [
   'Моя бабушка случайно чихнула с фотоаппаратом в руках и у неё получилась фотография лучше.',
   'Я поскользнулся на банановой кожуре и уронил фотоаппарат на кота и у меня получилась фотография лучше.',
   'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!'
-]
+];
 
-const generateComments = function (commentsText, names) {
+const generateComments = (commentsText, names) => {
   const commentsCount = getRandomPositiveInteger(1, commentsText.length);
   const comments = [];
   for (let i = 0; i < commentsCount; i++) {
     comments[i] = {
       id: i + 1,
-      avatar: 'img/avatar-' + String(getRandomPositiveInteger(1,6)) + '.svg',
+      avatar: `img/avatar-${  String(getRandomPositiveInteger(1,6))  }.svg`,
       message: commentsText[getRandomPositiveInteger(0, commentsText.length - 1)],
       name: names[getRandomPositiveInteger(0, names.length -1)]
     };
@@ -35,13 +35,13 @@ const generateComments = function (commentsText, names) {
   return comments;
 };
 
-const generatePhotoData = function () {
+const generatePhotoData =  () => {
   const descriptions = [];
   for (let i = 1; i <= PHOTOS_COUNT; i++) {
     {
       descriptions[i - 1] = {
         id: i,
-        url: 'photos/' + String(i) + '.jpg',
+        url: `photos/${  String(i)  }.jpg`,
         description: photosDescriptionsText[getRandomPositiveInteger(0, photosDescriptionsText.length - 1)],
         likes: getRandomPositiveInteger(15, 200),
         comments: generateComments(photosCommentsText, usersNames)
@@ -51,4 +51,4 @@ const generatePhotoData = function () {
   return descriptions;
 };
 
-export{generatePhotoData}
+export{generatePhotoData};
