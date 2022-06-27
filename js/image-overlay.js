@@ -1,3 +1,7 @@
+import { getDefault, getBigger, getSmaller } from './image-edit.js';
+const buttonBigger = document.querySelector('.scale__control--bigger');
+const buttonSmaller = document.querySelector('.scale__control--smaller');
+
 const imgUploadOverlay = document.querySelector('.img-upload__overlay');
 const imgUploadInput = document.querySelector('#upload-file');
 const buttonClose = document.querySelector('#upload-cancel');
@@ -21,7 +25,9 @@ function openImgOverlay() {
   imgUploadOverlay.classList.remove('hidden');
   document.addEventListener('keydown', onImgOverlayEscKeydown);
   buttonClose.addEventListener('click', closeImgOverlay);
-
+  getDefault();
+  buttonBigger.addEventListener('click', getBigger);
+  buttonSmaller.addEventListener('click', getSmaller);
 }
 
 function closeImgOverlay() {
@@ -32,6 +38,8 @@ function closeImgOverlay() {
   document.body.classList.remove('modal-open');
   buttonClose.removeEventListener('click', closeImgOverlay);
   document.removeEventListener('keydown', onImgOverlayEscKeydown);
+  buttonBigger.removeEventListener('click', getBigger);
+  buttonSmaller.removeEventListener('click', getSmaller);
 }
 
 export {onImgOverlayEscKeydown};

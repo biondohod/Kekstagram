@@ -1,6 +1,6 @@
 import { getRandomPositiveInteger } from './util.js';
 
-const PHOTOS_COUNT = 26;
+const PHOTOS_COUNT = 27;
 const usersNames = ['Артем', 'Алиса', 'Ярослав', 'Андрей', 'Вадим', 'Ясуо', 'Юля', 'Соня', 'Виталик', 'Мухаммед', 'Ауе басота', 'Ass Destroyer', 'Хулиган228', 'Катя'];
 const photosDescriptionsText = [
   'Мне бог не дал братьев по крови, но я нашел их в очереди в аптеке за прокладками',
