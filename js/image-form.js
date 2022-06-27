@@ -22,14 +22,15 @@ const deleteErrorMessage = () => {
 
 
 const hashtagCheck = () => {
+  let isFine = true;
   hashtags = textHashtags.value.split(' ');
   if (hashtags.length > 5) {
     createErrorMessage('Можно добавить не более 5 хэштегов');
-    return false;
+    isFine = false;
+    return isFine;
   } else {
     deleteErrorMessage();
   }
-  let isFine = true;
   hashtags.forEach( (hashtag) => {
     if (!isValidHashtags(hashtag)) {
       createErrorMessage('Хэштег должен начинаться с # и может содержать в себе только кириллицу и латинские буквы, а так же цифры от 0 до 9. Длина хэштега не может превышать 20 символов');
