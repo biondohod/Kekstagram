@@ -1,9 +1,10 @@
 import { onImgOverlayEscKeydown } from './image-overlay.js';
-const textHashtags = document.querySelector('.text__hashtags');
-const buttonSubmit = document.querySelector('#upload-submit');
-const textDescription = document.querySelector('.text__description');
+import { sendData } from './api.js';
+const imgForm = document.querySelector('#upload-select-image');
+const textHashtags = imgForm.querySelector('.text__hashtags');
+const buttonSubmit = imgForm.querySelector('#upload-submit');
+const textDescription = imgForm.querySelector('.text__description');
 const regExp = /^#[A-Za-zА-Яа-яЁё0-9]{1,19}$/;
-
 const isValidHashtags = (str) => regExp.test(str);
 
 let hashtags = textHashtags.value.split(' ');
@@ -72,13 +73,17 @@ textHashtags.addEventListener('input', () => {
   if (hashtags[0] !== '' ) {
     if(!hashtagCheck())
     {
+      textHashtags.style.outline = '2px solid #DC143C';
       buttonSubmit.disabled = true;
     } else {
+      textHashtags.style.outline = 'none';
       buttonSubmit.disabled = false;
     }
   } else if (textHashtags.value !=='') {
+    textHashtags.style.outline = 'none';
     textHashtags.value = textHashtags.value.trim();
   } else {
+    textHashtags.style.outline = 'none';
     deleteErrorMessage();
     buttonSubmit.disabled = false;
   }
@@ -100,3 +105,17 @@ textDescription.addEventListener('focus', () => {
 textDescription.addEventListener('blur', () => {
   document.addEventListener('keydown', onImgOverlayEscKeydown);
 });
+
+const sendUsersData = (onSuccsess, onFail) => {
+  imgForm.addEventListener('submit', (evt) => {
+    evt.preventDefault();
+    const formData = new FormData(evt.target);
+    sendData(
+      onSuccsess,
+      onFail,
+      formData
+    );
+  });
+};
+
+export {sendUsersData};

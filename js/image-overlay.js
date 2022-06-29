@@ -1,4 +1,4 @@
-import { getDefault, getBigger, getSmaller } from './image-edit.js';
+import { getDefault, getBigger, getSmaller, filterNone } from './image-edit.js';
 const buttonBigger = document.querySelector('.scale__control--bigger');
 const buttonSmaller = document.querySelector('.scale__control--smaller');
 
@@ -26,6 +26,7 @@ function openImgOverlay() {
   document.addEventListener('keydown', onImgOverlayEscKeydown);
   buttonClose.addEventListener('click', closeImgOverlay);
   getDefault();
+  filterNone();
   buttonBigger.addEventListener('click', getBigger);
   buttonSmaller.addEventListener('click', getSmaller);
 }
@@ -42,6 +43,6 @@ function closeImgOverlay() {
   buttonSmaller.removeEventListener('click', getSmaller);
 }
 
-export {onImgOverlayEscKeydown};
+export {onImgOverlayEscKeydown, closeImgOverlay};
 
 

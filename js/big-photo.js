@@ -46,8 +46,6 @@ const loadMoreComments = () => {
 };
 
 const writeComment = () => {
-  const preview = document.getElementById(bigPicture.id);
-  const commentsCountPreview = preview.querySelector('.picture__comments');
   commentInput.value = commentInput.value.trim();
   commentInput.setCustomValidity('');
   if (commentInput.value !== '') {
@@ -62,14 +60,12 @@ const writeComment = () => {
     socialComments.append(newComment);
     commentsCount.textContent++;
     commentsCountView.textContent++;
-    commentsCountPreview.textContent++;
     commentInput.value = '';
   }
 };
 
 const renderBigPhoto = (photo, description, comments) => {
   bigPicture.id = photo.id;
-  const preview = document.getElementById(photo.id);
   const bigPictureImg = bigPicture.querySelector('.big-picture__img').querySelector('img');
   bigPictureImg.src = photo.querySelector('.picture__img').src;
   bigPictureImg.alt = description;
@@ -78,12 +74,6 @@ const renderBigPhoto = (photo, description, comments) => {
 
   const bigPictureLikes = bigPicture.querySelector('.likes-count');
   bigPictureLikes.textContent = photo.querySelector('.picture__likes').textContent;
-  if (preview.classList.contains('picture--liked')) {
-    bigPictureLikes.classList.add('likes-count--liked');
-  } else {
-    bigPictureLikes.classList.remove('likes-count--liked');
-  }
-
   const bigPictureCommentsCount = bigPicture.querySelector('.comments-count');
   bigPictureCommentsCount.textContent = photo.querySelector('.picture__comments').textContent;
   createCommentsList(comments);
