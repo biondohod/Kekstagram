@@ -7,6 +7,7 @@ const imgUploadInput = document.querySelector('#upload-file');
 const buttonClose = document.querySelector('#upload-cancel');
 const textHashtags = document.querySelector('.text__hashtags');
 const textDescription = document.querySelector('.text__description');
+const buttonSubmit = document.querySelector('#upload-submit');
 
 imgUploadInput.addEventListener('change', () => {
   openImgOverlay();
@@ -37,6 +38,8 @@ function closeImgOverlay() {
   textDescription.value = '';
   imgUploadOverlay.classList.add('hidden');
   document.body.classList.remove('modal-open');
+  buttonSubmit.textContent = 'Опубликовать';
+  buttonSubmit.disabled = false;
   buttonClose.removeEventListener('click', closeImgOverlay);
   document.removeEventListener('keydown', onImgOverlayEscKeydown);
   buttonBigger.removeEventListener('click', getBigger);
