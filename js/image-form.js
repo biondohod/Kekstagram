@@ -109,6 +109,8 @@ textDescription.addEventListener('blur', () => {
 const sendUsersData = (onSuccsess, onFail) => {
   imgForm.addEventListener('submit', (evt) => {
     evt.preventDefault();
+    buttonSubmit.disabled = true;
+    buttonSubmit.textContent = 'Опубликовываю...';
     const formData = new FormData(evt.target);
     sendData(
       onSuccsess,
