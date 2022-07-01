@@ -1,7 +1,9 @@
+let photosData = null;
 const getData = (onSuccsess, onFail) => {
   fetch('https://22.javascript.pages.academy/kekstagram/data')
     .then((response) => response.json())
     .then((photoData) => {
+      photosData = photoData;
       onSuccsess(photoData);
     })
     .catch(() => {
@@ -29,4 +31,4 @@ const sendData = (onSuccsess, onFail, body) => {
     });
 };
 
-export{getData, sendData};
+export{getData, sendData, photosData};

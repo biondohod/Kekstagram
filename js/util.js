@@ -9,6 +9,26 @@ const getRandomPositiveInteger = (a, b) => {
   return Math.floor(result);
 };
 
+const getRandomUniqueNumbers = (min, max, count) => {
+  if (count < max) {
+    const result = [];
+    let i = 0;
+    while (i < count) {
+      const num = getRandomPositiveInteger(min, max);
+      if(find(result, num) === 0) {
+        result[i] = num;
+        i++;
+      }
+    }
+    return result;
+  }
+  function find(array, value) {
+    for(let j=0; j<array.length; j++) {
+      if (array[j] === value) {return 1;}
+    }
+    return 0;
+  }
+};
 const ALERT_SHOW_TIME = 5000;
 const showAlert = (message) => {
   const alert = document.createElement('div');
@@ -87,5 +107,13 @@ const showSuccessMessage = () => {
   document.addEventListener('keydown', escCloseSuccessMessage);
 };
 
-export {getRandomPositiveInteger, showAlert, showErrorMessage, showSuccessMessage};
+const debounce = (callback, timeoutDelay) => {
+  let timeoutId;
+  return (...rest) => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => callback.apply(this, rest), timeoutDelay);
+  };
+};
+
+export {getRandomPositiveInteger, getRandomUniqueNumbers, showAlert, showErrorMessage, showSuccessMessage, debounce};
 

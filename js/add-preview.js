@@ -4,6 +4,12 @@ const photosFragment = document.createDocumentFragment();
 const pictures = document.querySelector('.pictures');
 
 const renderPreview = (photosData) => {
+  const picturesCollection = document.querySelectorAll('.picture');
+  if (picturesCollection !== undefined) {
+    picturesCollection.forEach((picture) => {
+      picture.remove();
+    });
+  }
   photosData.forEach(({id, url, description, likes, comments}) => {
     const newPhoto = pictureTemplate.cloneNode(true);
     newPhoto.id = id;
@@ -14,6 +20,7 @@ const renderPreview = (photosData) => {
     photosFragment.append(newPhoto);
   });
   pictures.append(photosFragment);
+  document.querySelector('.img-filters').classList.remove('img-filters--inactive');
 };
 
 export {renderPreview};

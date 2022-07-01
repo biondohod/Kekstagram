@@ -10,13 +10,15 @@ const textDescription = document.querySelector('.text__description');
 const buttonSubmit = document.querySelector('#upload-submit');
 
 imgUploadInput.addEventListener('change', () => {
+  const image = imgUploadInput.files[0];
+  const preview = document.querySelector('.img-upload__preview').querySelector('img');
+  preview.src = URL.createObjectURL(image);
   openImgOverlay();
 });
 
 const onImgOverlayEscKeydown = (evt) => {
   if (evt.key === 'Escape') {
-    // eslint-disable-next-line no-unused-expressions
-    evt.PreventDefault;
+    evt.preventDefault();
     closeImgOverlay();
   }
 };

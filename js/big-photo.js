@@ -65,10 +65,8 @@ const writeComment = () => {
 };
 
 const renderBigPhoto = (photo, description, comments) => {
-  bigPicture.id = photo.id;
   const bigPictureImg = bigPicture.querySelector('.big-picture__img').querySelector('img');
   bigPictureImg.src = photo.querySelector('.picture__img').src;
-  bigPictureImg.alt = description;
   const bigPictureDescription = bigPicture.querySelector('.social__caption');
   bigPictureDescription.textContent = description;
 
@@ -88,8 +86,7 @@ const renderBigPhoto = (photo, description, comments) => {
 
 const onBigPhotoEscKeydown = (evt) => {
   if (evt.key === 'Escape') {
-    // eslint-disable-next-line no-unused-expressions
-    evt.PreventDefault;
+    evt.preventDefault();
     closeBigPhoto();
   }
 };
